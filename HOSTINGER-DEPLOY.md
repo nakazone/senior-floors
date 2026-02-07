@@ -77,4 +77,27 @@ Resumo: **Build** = `npm install && npm run build` e **Start** = `npm run start:
   A `DATABASE_URL` deve ser a URL real do MySQL do Hostinger (ex.: `mysql://usuario:senha@localhost:3306/nome_do_banco`). Nao use o host literal `host` — use o host que o painel do Hostinger mostra para o banco (geralmente `localhost`). O build do website nao precisa do banco (paginas admin e de dados sao `force-dynamic`); o erro so aparece se alguma pagina tentar conectar no build.
 
 - **www.senior-floors.com mostra o site antigo**  
-  O dominio esta a ser servido pelo site antigo (public_html / PHP). Para mostrar o **novo site Node**, no painel Hostinger associe **www.senior-floors.com** a esta **Node.js Web App** (e nao ao alojamento estatico/PHP). O app Next nao usa mais `/newsite`; serve na raiz do dominio.
+  Siga a secao abaixo: **Fazer o dominio mostrar o novo site (Node)**.
+---
+
+## Fazer o dominio mostrar o novo site (Node)
+
+Se **www.senior-floors.com** ainda abre o site antigo (PHP/estatico), e porque o dominio esta ligado ao alojamento antigo (public_html), nao a app Node. E preciso **associar o dominio a esta Node.js Web App** no hPanel.
+
+### Passos no hPanel (Hostinger)
+
+1. Entre no **hPanel** (painel da Hostinger).
+2. Va em **Websites** (ou **Sites**) e localize **duas** coisas:
+   - o **site antigo** (ex.: senior-floors.com / public_html);
+   - a **Node.js Web App** onde fez deploy do repo (Git) com Build `npm run build` e Start `npm run start:hostinger`.
+3. Abra a **Node.js Web App** (clique nela) e procure:
+   - **Domain** / **Dominio** / **Application URL** / **Connect custom domain**.
+4. **Conecte o dominio** www.senior-floors.com a **esta** Node.js app:
+   - Se houver "Add domain" ou "Connect custom domain", adicione **www.senior-floors.com** (e, se quiser, **senior-floors.com** para redirecionar para www).
+   - Se o dominio ja estiver atribuido a outro site (o site antigo), pode ser preciso **alterar o dominio do site antigo** (Sites → tres pontos no site antigo → Alterar dominio) para outro endereco ou subdominio, e depois **atribuir www.senior-floors.com** a esta Node.js app.
+5. Guarde as alteracoes e aguarde alguns minutos (ou ate 24 h se a Hostinger indicar propagacao DNS).
+6. Confirme que as variaveis desta app estao corretas: `NEXTAUTH_URL` e `NEXT_PUBLIC_SITE_URL` = `https://www.senior-floors.com`.
+
+**Referencia Hostinger:** [Connect a custom domain to your web app](https://www.hostinger.com/in/tutorials/connect-custom-domain-to-web-app)
+
+Se no seu plano a opcao de "conectar dominio" so aparecer para o site em public_html e nao para a Node.js app, pode ser limitacao do painel. Nesse caso, as alternativas sao: (1) usar um **subdominio** para o novo site (ex.: **novo.senior-floors.com** ou **app.senior-floors.com**) e apontar esse subdominio para a Node.js app; ou (2) contactar o **suporte Hostinger** e pedir para associar **www.senior-floors.com** a esta Node.js Web App em vez do site em public_html.
