@@ -71,12 +71,10 @@ export default function QuotesPage() {
     const unit = Number(form.unit_price.replace(',', '.'))
     const marginPercent = Number(form.margin_percent.replace(',', '.')) || 15
     if (!leadId || area <= 0 || unit < 0) {
-      alert('Informe lead, metragem e pre?o unit?rio.')
+      alert('Informe lead, metragem e preco unitario.')
       return
     }
     const materials = area * unit
-    const labor = materials * (margin / 100)
-    const total = materials + labor
     setSubmitting(true)
     const margin = marginPercent || 15
     const res = await fetch('/api/quotes', {
@@ -94,16 +92,16 @@ export default function QuotesPage() {
       router.push(`/quotes/${data.data.id}`)
       return
     }
-    alert(data.message || 'Erro ao criar orçamento')
+    alert(data.message || 'Erro ao criar orcamento')
   }
 
   return (
     <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-      <h1 style={{ marginBottom: 8, color: '#1a2036', fontSize: 22, fontWeight: 700 }}>Orçamentos</h1>
+      <h1 style={{ marginBottom: 8, color: '#1a2036', fontSize: 22, fontWeight: 700 }}>Orcamentos</h1>
       <p style={{ color: '#64748b', marginBottom: 20 }}>Crie e gerencie or?amentos. Filtros por status. Abra um or?amento para editar itens e status.</p>
 
       <div style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: 8, padding: 20, marginBottom: 20 }}>
-        <h3 style={{ marginTop: 0, marginBottom: 16, color: '#1a2036', fontSize: 18 }}>Novo or?amento (rápido)</h3>
+        <h3 style={{ marginTop: 0, marginBottom: 16, color: '#1a2036', fontSize: 18 }}>Novo orcamento (rapido)</h3>
         <form onSubmit={onSubmit} style={{ maxWidth: 560 }}>
           <div style={{ marginBottom: 12 }}>
             <label style={{ display: 'block', marginBottom: 6, fontWeight: 600 }}>Lead</label>
@@ -113,9 +111,9 @@ export default function QuotesPage() {
               onChange={(e) => setForm((f) => ({ ...f, lead_id: e.target.value }))}
               style={{ width: '100%', padding: 10, border: '2px solid #e2e8f0', borderRadius: 6 }}
             >
-              <option value="">? Selecione o lead ?</option>
+              <option value="">-- Selecione o lead --</option>
               {leads.map((l) => (
-                <option key={l.id} value={l.id}>{l.name} ? {l.email} ? #{l.id}</option>
+                <option key={l.id} value={l.id}>{l.name} - {l.email} - #{l.id}</option>
               ))}
             </select>
           </div>
@@ -176,7 +174,7 @@ export default function QuotesPage() {
               cursor: submitting ? 'not-allowed' : 'pointer',
             }}
           >
-            {submitting ? 'Criando?' : 'Criar e editar or?amento'}
+            {submitting ? 'Criando...' : 'Criar e editar orcamento'}
           </button>
         </form>
       </div>
@@ -191,7 +189,7 @@ export default function QuotesPage() {
               onChange={(e) => setFilterStatus(e.target.value)}
               style={{ padding: '8px 12px', border: '2px solid #e2e8f0', borderRadius: 6 }}
             >
-              <option value="">? Todos ?</option>
+              <option value="">-- Todos --</option>
               {Object.entries(QUOTE_STATUS).map(([k, l]) => (
                 <option key={k} value={k}>{l}</option>
               ))}
@@ -202,7 +200,7 @@ export default function QuotesPage() {
         {loading ? (
           <p style={{ color: '#64748b' }}>Carregando?</p>
         ) : filteredQuotes.length === 0 ? (
-          <p style={{ color: '#64748b' }}>Nenhum or?amento encontrado.</p>
+          <p style={{ color: '#64748b' }}>Nenhum orcamento encontrado.</p>
         ) : (
           <table style={{ width: '100%', borderCollapse: 'collapse' }}>
             <thead>
@@ -225,7 +223,7 @@ export default function QuotesPage() {
                         {q.lead?.name ?? `Lead #${q.lead_id}`}
                       </Link>
                     ) : (
-                      q.lead?.name ?? '?'
+                      q.lead?.name ?? '-'
                     )}
                   </td>
                   <td style={{ padding: '12px 16px' }}>R$ {Number(q.total_amount).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>

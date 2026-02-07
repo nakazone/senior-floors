@@ -7,7 +7,7 @@ const STATUS_LABELS: Record<string, string> = {
   scheduled: 'Agendada',
   completed: 'Realizada',
   cancelled: 'Cancelada',
-  no_show: 'Nùo compareceu',
+  no_show: 'Nao compareceu',
 }
 
 type Visit = {
@@ -78,16 +78,16 @@ export default function VisitsPage() {
   if (loading) {
     return (
       <div>
-        <h1 style={{ marginBottom: 24, color: '#1a2036' }}>Visitas e mediùùes</h1>
-        <p style={{ color: '#64748b' }}>Carregandoù</p>
+        <h1 style={{ marginBottom: 24, color: '#1a2036' }}>Visitas e medicoes</h1>
+        <p style={{ color: '#64748b' }}>Carregando...</p>
       </div>
     )
   }
 
   return (
     <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-      <h1 style={{ marginBottom: 8, color: '#1a2036', fontSize: 22, fontWeight: 700 }}>Visitas e mediùùes</h1>
-      <p style={{ color: '#64748b', marginBottom: 20 }}>Agende visitas, registre mediùùes e vincule ao lead/projeto.</p>
+      <h1 style={{ marginBottom: 8, color: '#1a2036', fontSize: 22, fontWeight: 700 }}>Visitas e medicoes</h1>
+      <p style={{ color: '#64748b', marginBottom: 20 }}>Agende visitas, registre medi??es e vincule ao lead/projeto.</p>
 
       <div style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: 8, padding: 20, marginBottom: 20 }}>
         <h3 style={{ marginTop: 0, marginBottom: 16, color: '#1a2036', fontSize: 18 }}>Nova visita</h3>
@@ -120,42 +120,42 @@ export default function VisitsPage() {
               onChange={(e) => setForm((f) => ({ ...f, seller_id: e.target.value }))}
               style={{ width: '100%', padding: 10, border: '2px solid #e2e8f0', borderRadius: 6 }}
             >
-              <option value="">ù</option>
+              <option value="">-</option>
               {users.map((u) => (
                 <option key={u.id} value={u.id}>{u.name}</option>
               ))}
             </select>
           </div>
           <div>
-            <label style={{ display: 'block', marginBottom: 6, fontWeight: 600, color: '#4a5568' }}>Tùcnico / Medidor</label>
+            <label style={{ display: 'block', marginBottom: 6, fontWeight: 600, color: '#4a5568' }}>Tecnico / Medidor</label>
             <select
               value={form.technician_id}
               onChange={(e) => setForm((f) => ({ ...f, technician_id: e.target.value }))}
               style={{ width: '100%', padding: 10, border: '2px solid #e2e8f0', borderRadius: 6 }}
             >
-              <option value="">ù</option>
+              <option value="">-</option>
               {users.map((u) => (
                 <option key={u.id} value={u.id}>{u.name}</option>
               ))}
             </select>
           </div>
           <div style={{ gridColumn: '1 / -1' }}>
-            <label style={{ display: 'block', marginBottom: 6, fontWeight: 600, color: '#4a5568' }}>Endereùo</label>
+            <label style={{ display: 'block', marginBottom: 6, fontWeight: 600, color: '#4a5568' }}>Endere?o</label>
             <input
               type="text"
               value={form.address}
               onChange={(e) => setForm((f) => ({ ...f, address: e.target.value }))}
-              placeholder="Endereùo da visita"
+              placeholder="Endere?o da visita"
               style={{ width: '100%', padding: 10, border: '2px solid #e2e8f0', borderRadius: 6 }}
             />
           </div>
           <div style={{ gridColumn: '1 / -1' }}>
-            <label style={{ display: 'block', marginBottom: 6, fontWeight: 600, color: '#4a5568' }}>Observaùùes</label>
+            <label style={{ display: 'block', marginBottom: 6, fontWeight: 600, color: '#4a5568' }}>Observacoes</label>
             <textarea
               rows={2}
               value={form.notes}
               onChange={(e) => setForm((f) => ({ ...f, notes: e.target.value }))}
-              placeholder="Checklist, observaùùes"
+              placeholder="Checklist, observacoes"
               style={{ width: '100%', padding: 10, border: '2px solid #e2e8f0', borderRadius: 6 }}
             />
           </div>
@@ -173,7 +173,7 @@ export default function VisitsPage() {
                 cursor: submitting ? 'not-allowed' : 'pointer',
               }}
             >
-              {submitting ? 'Salvandoù' : 'Agendar visita'}
+              {submitting ? 'Salvando...?' : 'Agendar visita'}
             </button>
           </div>
         </form>
@@ -191,7 +191,7 @@ export default function VisitsPage() {
                 <th style={{ padding: '12px 16px', textAlign: 'left', fontWeight: 600 }}>Lead</th>
                 <th style={{ padding: '12px 16px', textAlign: 'left', fontWeight: 600 }}>Data/Hora</th>
                 <th style={{ padding: '12px 16px', textAlign: 'left', fontWeight: 600 }}>Status</th>
-                <th style={{ padding: '12px 16px', textAlign: 'left', fontWeight: 600 }}>Endereùo</th>
+                <th style={{ padding: '12px 16px', textAlign: 'left', fontWeight: 600 }}>Endere?o</th>
                 <th style={{ padding: '12px 16px', textAlign: 'left', fontWeight: 600 }}></th>
               </tr>
             </thead>
@@ -205,7 +205,7 @@ export default function VisitsPage() {
                         {v.lead?.name ?? `Lead #${v.lead_id}`}
                       </Link>
                     ) : (
-                      'ù'
+                      '?'
                     )}
                   </td>
                   <td style={{ padding: '12px 16px' }}>{new Date(v.scheduled_at).toLocaleString('pt-BR')}</td>
@@ -224,9 +224,9 @@ export default function VisitsPage() {
                       {STATUS_LABELS[v.status || 'scheduled'] ?? v.status}
                     </span>
                   </td>
-                  <td style={{ padding: '12px 16px' }}>{(v.address || '').slice(0, 40)}{(v.address?.length ?? 0) > 40 ? 'ù' : ''}</td>
+                  <td style={{ padding: '12px 16px' }}>{(v.address || '').slice(0, 40)}{(v.address?.length ?? 0) > 40 ? '?' : ''}</td>
                   <td style={{ padding: '12px 16px' }}>
-                    <Link href={`/visits/${v.id}`} style={{ color: '#1a2036', fontWeight: 500 }}>Ver / Mediùùo</Link>
+                    <Link href={`/visits/${v.id}`} style={{ color: '#1a2036', fontWeight: 500 }}>Ver / Medicao</Link>
                   </td>
                 </tr>
               ))}

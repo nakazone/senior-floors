@@ -74,9 +74,9 @@ export default function QuoteDetailPage() {
   if (loading || !quote) {
     return (
       <div>
-        <h1 style={{ marginBottom: 24, color: '#1a2036' }}>Orçamento #{id}</h1>
-        {!loading && !quote && <p style={{ color: '#e53e3e' }}>Orçamento não encontrado.</p>}
-        {loading && <p style={{ color: '#64748b' }}>Carregando…</p>}
+        <h1 style={{ marginBottom: 24, color: '#1a2036' }}>Orcamento #{id}</h1>
+        {!loading && !quote && <p style={{ color: '#e53e3e' }}>Orcamento nao encontrado.</p>}
+        {loading && <p style={{ color: '#64748b' }}>Carregando?</p>}
         <Link href="/quotes" style={{ color: '#1a2036', marginTop: 16, display: 'inline-block' }}>? Voltar</Link>
       </div>
     )
@@ -84,7 +84,7 @@ export default function QuoteDetailPage() {
 
   return (
     <div style={{ maxWidth: 1000, margin: '0 auto' }}>
-      <h1 style={{ marginBottom: 8, color: '#1a2036' }}>Orçamento #{quote.id}</h1>
+      <h1 style={{ marginBottom: 8, color: '#1a2036' }}>Orcamento #{quote.id}</h1>
       <p style={{ marginBottom: 20 }}>
         <Link href="/quotes" style={{ color: '#1a2036', padding: '6px 12px', background: '#f1f5f9', borderRadius: 6, textDecoration: 'none', fontSize: 13 }}>? Voltar</Link>
         {quote.lead_id && (
@@ -126,7 +126,7 @@ export default function QuoteDetailPage() {
               cursor: updating ? 'not-allowed' : 'pointer',
             }}
           >
-            {updating ? 'Salvando…' : 'Atualizar'}
+            {updating ? 'Salvando?' : 'Atualizar'}
           </button>
         </form>
       </div>
@@ -138,8 +138,8 @@ export default function QuoteDetailPage() {
             <thead>
               <tr style={{ background: '#f1f5f9', fontWeight: 600 }}>
                 <th style={{ padding: 10, textAlign: 'left', borderBottom: '1px solid #e2e8f0' }}>Tipo</th>
-                <th style={{ padding: 10, textAlign: 'left', borderBottom: '1px solid #e2e8f0' }}>Área (sqft)</th>
-                <th style={{ padding: 10, textAlign: 'left', borderBottom: '1px solid #e2e8f0' }}>Preço unit.</th>
+                <th style={{ padding: 10, textAlign: 'left', borderBottom: '1px solid #e2e8f0' }}>Area (sqft)</th>
+                <th style={{ padding: 10, textAlign: 'left', borderBottom: '1px solid #e2e8f0' }}>Preco unit.</th>
                 <th style={{ padding: 10, textAlign: 'left', borderBottom: '1px solid #e2e8f0' }}>Total</th>
                 <th style={{ padding: 10, textAlign: 'left', borderBottom: '1px solid #e2e8f0' }}>Notas</th>
               </tr>
@@ -151,7 +151,7 @@ export default function QuoteDetailPage() {
                   <td style={{ padding: 10 }}>{item.area_sqft}</td>
                   <td style={{ padding: 10 }}>{item.unit_price}</td>
                   <td style={{ padding: 10 }}>R$ {Number(item.total_price).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
-                  <td style={{ padding: 10 }}>{item.notes || '—'}</td>
+                  <td style={{ padding: 10 }}>{item.notes || '?'}</td>
                 </tr>
               ))}
             </tbody>

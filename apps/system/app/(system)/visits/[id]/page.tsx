@@ -8,7 +8,7 @@ const STATUS_LABELS: Record<string, string> = {
   scheduled: 'Agendada',
   completed: 'Realizada',
   cancelled: 'Cancelada',
-  no_show: 'N?o compareceu',
+  no_show: 'Nao compareceu',
 }
 
 type Visit = {
@@ -75,8 +75,8 @@ export default function VisitDetailPage() {
       <div>
         <h1 style={{ marginBottom: 24, color: '#1a2036' }}>Visita #{id}</h1>
         {!loading && !visit && <p style={{ color: '#e53e3e' }}>Visita n?o encontrada.</p>}
-        {loading && <p style={{ color: '#64748b' }}>Carregando?</p>}
-        <Link href="/visits" style={{ color: '#1a2036', marginTop: 16, display: 'inline-block' }}>? Voltar para Visitas</Link>
+        {loading && <p style={{ color: '#64748b' }}>Carregando...</p>}
+        <Link href="/visits" style={{ color: '#1a2036', marginTop: 16, display: 'inline-block' }}>&lt; Voltar para Visitas</Link>
       </div>
     )
   }
@@ -85,7 +85,7 @@ export default function VisitDetailPage() {
     <div style={{ maxWidth: 900, margin: '0 auto' }}>
       <h1 style={{ marginBottom: 8, color: '#1a2036', fontSize: 22, fontWeight: 700 }}>Visita #{visit.id}</h1>
       <p style={{ marginBottom: 20 }}>
-        <Link href="/visits" style={{ color: '#1a2036' }}>? Voltar para Visitas</Link>
+        <Link href="/visits" style={{ color: '#1a2036' }}>&lt; Voltar para Visitas</Link>
         {visit.lead_id && (
           <> | <Link href={`/leads/${visit.lead_id}`} style={{ color: '#1a2036' }}>Ver lead</Link></>
         )}
@@ -103,11 +103,11 @@ export default function VisitDetailPage() {
         </div>
         <div style={{ display: 'flex', padding: '8px 0', borderBottom: '1px solid #f0f0f0' }}>
           <span style={{ fontWeight: 600, color: '#4a5568', width: 140, flexShrink: 0 }}>Lead</span>
-          <span>{leadName || (visit.lead_id ? `#${visit.lead_id}` : '?')}</span>
+          <span>{leadName || (visit.lead_id ? `#${visit.lead_id}` : '-')}</span>
         </div>
         {visit.address && (
           <div style={{ display: 'flex', padding: '8px 0', borderBottom: '1px solid #f0f0f0' }}>
-            <span style={{ fontWeight: 600, color: '#4a5568', width: 140, flexShrink: 0 }}>Endere?o</span>
+            <span style={{ fontWeight: 600, color: '#4a5568', width: 140, flexShrink: 0 }}>Endereco</span>
             <span>{visit.address}</span>
           </div>
         )}
@@ -142,14 +142,14 @@ export default function VisitDetailPage() {
               cursor: updating ? 'not-allowed' : 'pointer',
             }}
           >
-            {updating ? 'Salvando?' : 'Atualizar'}
+            {updating ? 'Salvando...' : 'Atualizar'}
           </button>
         </form>
       </div>
 
       <div style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: 8, padding: 20 }}>
         <h2 style={{ marginTop: 0, marginBottom: 16, color: '#1a2036', fontSize: 18 }}>Medi??es</h2>
-        <p style={{ color: '#64748b', fontSize: 14 }}>Registre medi??es nas observa??es da visita ou use o campo acima. Para medi??es detalhadas por ambiente, uma tabela de medi??es pode ser adicionada em vers?es futuras.</p>
+        <p style={{ color: '#64748b', fontSize: 14 }}>Registre medicoes nas observa??es da visita ou use o campo acima. Para medicoes detalhadas por ambiente, uma tabela de medicoes pode ser adicionada em vers?es futuras.</p>
       </div>
     </div>
   )

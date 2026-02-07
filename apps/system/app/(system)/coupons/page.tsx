@@ -54,12 +54,12 @@ export default function CouponsPage() {
     e.preventDefault()
     const code = form.code.trim().toUpperCase()
     if (!code || code.length < 2) {
-      alert('Código é obrigatório (mín. 2 caracteres).')
+      alert('Codigo e obrigatorio (min. 2 caracteres).')
       return
     }
     const discountValue = Number(form.discount_value.replace(',', '.'))
     if (Number.isNaN(discountValue) || discountValue < 0) {
-      alert('Valor do desconto inválido.')
+      alert('Valor do desconto invalido.')
       return
     }
     setSubmitting(true)
@@ -111,7 +111,7 @@ export default function CouponsPage() {
     return (
       <div>
         <h1 style={{ marginBottom: 24, color: '#1a2036' }}>Coupons</h1>
-        <p style={{ color: '#64748b' }}>Carregando…</p>
+        <p style={{ color: '#64748b' }}>Carregando...</p>
       </div>
     )
   }
@@ -156,15 +156,15 @@ export default function CouponsPage() {
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead>
             <tr style={{ background: '#1a2036', color: '#fff' }}>
-              <th style={{ padding: '12px 16px', textAlign: 'left', fontWeight: 600 }}>Código</th>
+              <th style={{ padding: '12px 16px', textAlign: 'left', fontWeight: 600 }}>Codigo</th>
               <th style={{ padding: '12px 16px', textAlign: 'left', fontWeight: 600 }}>Nome</th>
               <th style={{ padding: '12px 16px', textAlign: 'left', fontWeight: 600 }}>Desconto</th>
               <th style={{ padding: '12px 16px', textAlign: 'left', fontWeight: 600 }}>Tipo</th>
               <th style={{ padding: '12px 16px', textAlign: 'left', fontWeight: 600 }}>Usos</th>
-              <th style={{ padding: '12px 16px', textAlign: 'left', fontWeight: 600 }}>Máx.</th>
-              <th style={{ padding: '12px 16px', textAlign: 'left', fontWeight: 600 }}>Válido até</th>
+              <th style={{ padding: '12px 16px', textAlign: 'left', fontWeight: 600 }}>Max.</th>
+              <th style={{ padding: '12px 16px', textAlign: 'left', fontWeight: 600 }}>Valido ate</th>
               <th style={{ padding: '12px 16px', textAlign: 'left', fontWeight: 600 }}>Status</th>
-              <th style={{ padding: '12px 16px', textAlign: 'left', fontWeight: 600 }}>Ações</th>
+              <th style={{ padding: '12px 16px', textAlign: 'left', fontWeight: 600 }}>Acoes</th>
             </tr>
           </thead>
           <tbody>
@@ -176,12 +176,12 @@ export default function CouponsPage() {
               coupons.map((c) => (
                 <tr key={c.id} style={{ borderBottom: '1px solid #e2e8f0' }}>
                   <td style={{ padding: '12px 16px', fontWeight: 600 }}>{c.code}</td>
-                  <td style={{ padding: '12px 16px' }}>{c.name ?? '—'}</td>
+                  <td style={{ padding: '12px 16px' }}>{c.name ?? '?'}</td>
                   <td style={{ padding: '12px 16px' }}>{formatDiscount(c)}</td>
                   <td style={{ padding: '12px 16px' }}>{(c.discount_type || 'percentage') === 'percentage' ? 'Percentual' : 'Valor fixo'}</td>
                   <td style={{ padding: '12px 16px' }}>{c.used_count ?? 0}</td>
                   <td style={{ padding: '12px 16px' }}>{c.max_uses ?? '?'}</td>
-                  <td style={{ padding: '12px 16px' }}>{c.valid_until ? new Date(c.valid_until).toLocaleDateString('pt-BR') : '—'}</td>
+                  <td style={{ padding: '12px 16px' }}>{c.valid_until ? new Date(c.valid_until).toLocaleDateString('pt-BR') : '?'}</td>
                   <td style={{ padding: '12px 16px' }}>
                     <span
                       style={{
@@ -249,7 +249,7 @@ export default function CouponsPage() {
             <h3 style={{ marginTop: 0, marginBottom: 20, color: '#1a2036' }}>Novo cupom</h3>
             <form onSubmit={onCreate}>
               <div style={{ marginBottom: 12 }}>
-                <label style={{ display: 'block', marginBottom: 4, fontWeight: 600, fontSize: 14 }}>Código *</label>
+                <label style={{ display: 'block', marginBottom: 4, fontWeight: 600, fontSize: 14 }}>Codigo *</label>
                 <input
                   type="text"
                   required
@@ -292,7 +292,7 @@ export default function CouponsPage() {
                 />
               </div>
               <div style={{ marginBottom: 12 }}>
-                <label style={{ display: 'block', marginBottom: 4, fontWeight: 600, fontSize: 14 }}>Máx. usos</label>
+                <label style={{ display: 'block', marginBottom: 4, fontWeight: 600, fontSize: 14 }}>Max. usos</label>
                 <input
                   type="number"
                   min={1}
@@ -303,7 +303,7 @@ export default function CouponsPage() {
                 />
               </div>
               <div style={{ marginBottom: 12 }}>
-                <label style={{ display: 'block', marginBottom: 4, fontWeight: 600, fontSize: 14 }}>Válido de</label>
+                <label style={{ display: 'block', marginBottom: 4, fontWeight: 600, fontSize: 14 }}>Valido de</label>
                 <input
                   type="date"
                   value={form.valid_from}
@@ -312,7 +312,7 @@ export default function CouponsPage() {
                 />
               </div>
               <div style={{ marginBottom: 12 }}>
-                <label style={{ display: 'block', marginBottom: 4, fontWeight: 600, fontSize: 14 }}>Válido até</label>
+                <label style={{ display: 'block', marginBottom: 4, fontWeight: 600, fontSize: 14 }}>Valido ate</label>
                 <input
                   type="date"
                   value={form.valid_until}
@@ -334,7 +334,7 @@ export default function CouponsPage() {
                     cursor: submitting ? 'not-allowed' : 'pointer',
                   }}
                 >
-                  {submitting ? 'Salvando…' : 'Criar cupom'}
+                  {submitting ? 'Salvando...' : 'Criar cupom'}
                 </button>
                 <button
                   type="button"

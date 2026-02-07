@@ -70,7 +70,7 @@ export default function PipelinePage() {
     return (
       <div>
         <h1 style={{ marginBottom: 24, color: '#1a2036' }}>Pipeline Comercial (Kanban)</h1>
-        <p style={{ color: '#64748b' }}>Carregandoù</p>
+        <p style={{ color: '#64748b' }}>Carregando?</p>
       </div>
     )
   }
@@ -78,10 +78,10 @@ export default function PipelinePage() {
   return (
     <div style={{ padding: 0, maxWidth: '100%', overflowX: 'auto' }}>
       <h1 style={{ marginBottom: 8, color: '#1a2036', fontSize: 22, fontWeight: 700 }}>Pipeline Comercial (Kanban)</h1>
-      <p style={{ color: '#64748b', marginBottom: 20 }}>Arraste os cards entre as colunas para mover o lead de estùgio.</p>
+      <p style={{ color: '#64748b', marginBottom: 20 }}>Arraste os cards entre as colunas para mover o lead de est?gio.</p>
 
       {stages.length === 0 ? (
-        <p style={{ color: '#e53e3e' }}>Nenhum estùgio no banco. Use CRM - Leads ou execute a migration do pipeline.</p>
+        <p style={{ color: '#e53e3e' }}>Nenhum est?gio no banco. Use CRM - Leads ou execute a migration do pipeline.</p>
       ) : (
         <div
           style={{
@@ -157,8 +157,8 @@ export default function PipelinePage() {
                   >
                     <Link href={`/leads/${lead.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                       <div style={{ fontWeight: 600, color: '#1a2036', marginBottom: 4 }}>{lead.name}</div>
-                      <div style={{ fontSize: 12, color: '#64748b' }}>{lead.email} ù {lead.phone || ''}</div>
-                      <div style={{ fontSize: 12, color: '#64748b' }}>{lead.source || ''} ù {new Date(lead.created_at).toLocaleDateString()}</div>
+                      <div style={{ fontSize: 12, color: '#64748b' }}>{lead.email} ? {lead.phone || ''}</div>
+                      <div style={{ fontSize: 12, color: '#64748b' }}>{lead.source || ''} ? {new Date(lead.created_at).toLocaleDateString()}</div>
                     </Link>
                   </div>
                 ))}
