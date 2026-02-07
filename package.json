@@ -9,7 +9,8 @@
     "apps/website"
   ],
   "scripts": {
-    "build": "npm run build:landing && npm run build:system && npm run build:website",
+    "build": "npm run build:hostinger",
+    "build:all": "npm run build:landing && npm run build:system && npm run build:website",
     "build:hostinger": "npm run build -w website && node -e \"require('fs').cpSync('apps/website/.next', '.next', {recursive:true})\"",
     "start:hostinger": "next start",
     "build:website": "npm run build -w website",

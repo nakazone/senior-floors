@@ -10,9 +10,9 @@ No painel do Hostinger (Node.js Web App / Git):
 
 2. **Build command** (obrigatorio):
    ```bash
-   npm install && npm run build:hostinger
+   npm install && npm run build
    ```
-   Isso builda o app `website` e copia o output para a raiz (`.next`), para o Hostinger encontrar o resultado.
+   O script `build` na raiz já faz o deploy do site (website) e deixa o output em `.next` na raiz. Se preferir ser explicito: `npm run build:hostinger`.
 
 3. **Start command:**
    ```bash
@@ -62,14 +62,14 @@ O Hostinger detecta o framework pela raiz do repo. Fizemos o seguinte:
 - Existe um `next.config.js` na **raiz** so para a deteccao aceitar o projeto.
 - Voce **precisa** informar os comandos acima (Build e Start). Nao use os sugeridos automaticamente (ex.: so `npm run build`), pois o padrao do repo builda os 3 apps.
 
-Resumo: **Build** = `npm install && npm run build:hostinger` e **Start** = `npm run start:hostinger`.
+Resumo: **Build** = `npm install && npm run build` e **Start** = `npm run start:hostinger`.
 
 ---
 
 ## Erros comuns
 
 - **"No output directory found after build"**  
-  Significa que o Hostinger rodou o build errado (ex.: so `npm run build`). O build padrao do repo nao coloca o output na raiz. Use exatamente: **Build** `npm install && npm run build:hostinger`.
+  O **Build** deve ser `npm install && npm run build` (o script `build` na raiz já gera o `.next` na raiz para o website). Nao use um comando que builda outros apps (landing/system). Para buildar os 3 apps use `npm run build:all`.
 
 - **"Can't reach database server at \`host:3306\`"**  
   A `DATABASE_URL` deve ser a URL real do MySQL do Hostinger (ex.: `mysql://usuario:senha@localhost:3306/nome_do_banco`). Nao use o host literal `host` — use o host que o painel do Hostinger mostra para o banco (geralmente `localhost`). O build do website nao precisa do banco (paginas admin e de dados sao `force-dynamic`); o erro so aparece se alguma pagina tentar conectar no build.
