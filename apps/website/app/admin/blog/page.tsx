@@ -9,6 +9,8 @@ type BlogPostWithAuthor = Prisma.BlogPostGetPayload<{
   include: { author: { select: { name: true; email: true } } }
 }>
 
+export const dynamic = 'force-dynamic'
+
 export default async function BlogPage() {
   const session = await getServerSession(authOptions)
 

@@ -63,3 +63,13 @@ O Hostinger detecta o framework pela raiz do repo. Fizemos o seguinte:
 - Voce **precisa** informar os comandos acima (Build e Start). Nao use os sugeridos automaticamente (ex.: so `npm run build`), pois o padrao do repo builda os 3 apps.
 
 Resumo: **Build** = `npm install && npm run build:hostinger` e **Start** = `npm run start:hostinger`.
+
+---
+
+## Erros comuns
+
+- **"No output directory found after build"**  
+  Significa que o Hostinger rodou o build errado (ex.: so `npm run build`). O build padrao do repo nao coloca o output na raiz. Use exatamente: **Build** `npm install && npm run build:hostinger`.
+
+- **"Can't reach database server at \`host:3306\`"**  
+  A `DATABASE_URL` deve ser a URL real do MySQL do Hostinger (ex.: `mysql://usuario:senha@localhost:3306/nome_do_banco`). Nao use o host literal `host` — use o host que o painel do Hostinger mostra para o banco (geralmente `localhost`). O build do website nao precisa do banco (paginas admin e de dados sao `force-dynamic`); o erro so aparece se alguma pagina tentar conectar no build.
