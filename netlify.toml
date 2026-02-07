@@ -1,7 +1,10 @@
 # Deploy do app SYSTEM (CRM) no Netlify
-# No Netlify: Site settings > Build & deploy > Build settings
-# - Base directory: apps/system (ou deixe vazio se usar so este arquivo com base abaixo)
-# - Variaveis de ambiente: DATABASE_URL, ADMIN_PASSWORD, SESSION_SECRET
+# IMPORTANTE: Se o build mostrar "Static site - no build step" ou publish = /opt/build/repo,
+# as configuracoes da UI estao sobrescrevendo. Em Build settings defina:
+#   Base directory = apps/system
+#   Build command = npm run build
+#   Publish directory = (vazio)
+# Ver apps/system/NETLIFY-BUILD-SETTINGS.md
 
 [build]
   base = "apps/system"

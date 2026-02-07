@@ -1,0 +1,11 @@
+# Config do app System para Netlify (monorepo: use Base directory = apps/system no Netlify UI)
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_FLAGS = "--legacy-peer-deps"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
