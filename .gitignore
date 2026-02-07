@@ -1,4 +1,4 @@
-# Dependências
+# Dependï¿½ncias
 node_modules/
 
 # Build / output
@@ -12,7 +12,7 @@ build/
 .env.local
 .env.*.local
 
-# Logs e sensíveis (Landing/Sistema)
+# Logs e sensï¿½veis (Landing/Sistema)
 config/database.php
 config/smtp.php
 admin-config.php
@@ -27,5 +27,8 @@ leads.csv
 .idea/
 .vscode/
 
-# Lock (opcional - descomente se quiser um único lock na raiz)
+# Lock (opcional - descomente se quiser um ï¿½nico lock na raiz)
 # package-lock.json
+
+# Local Netlify folder
+.netlify

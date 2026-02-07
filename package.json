@@ -19,6 +19,7 @@
     "dev:system": "npm run dev -w system",
     "start:website": "npm run start -w website",
     "start:system": "npm run start -w system",
+    "deploy:system": "netlify deploy --prod --filter system",
     "postinstall": "node scripts/postinstall.js"
   },
   "engines": {

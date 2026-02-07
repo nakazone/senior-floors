@@ -6,6 +6,8 @@
 [build]
   base = "apps/system"
   command = "npm run build"
+  # Publish relativo ao base: apps/system/.next (nao use "apps/system/.next" no Netlify UI senao duplica)
+  publish = ".next"
 [build.environment]
   NODE_VERSION = "18"
   NPM_FLAGS = "--legacy-peer-deps"
